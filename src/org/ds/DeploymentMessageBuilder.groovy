@@ -6,10 +6,11 @@ class DeploymentMessageBuilder {
     DeploymentMessageBuilder(script, yaml){
         this.script = script
         this.yaml =yaml
-        this.script.echo("thi script is ${script}")
+
     }
 
     def build(){
+        this.script.echo("check if ${yaml} is valid")
         if (!script.fileExists(this.yaml)){
             throw new FileNotFoundException("Unable to find file ${yaml}")
 
