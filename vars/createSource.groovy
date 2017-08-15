@@ -1,6 +1,4 @@
-def call(script, pythonPath, stashName, archive = true) {
-    script.echo("Creating a source release for $stashName")
-    script.echo("using $pythonPath. archive is set to $archive")
+def call(pythonPath, stashName, archive = true) {
     node {
         deleteDir()
         unstash "$stashName"
