@@ -8,7 +8,8 @@ class DeploymentMessageBuilder {
         this.yaml =yaml
     }
     def build(){
-        script.readYaml file: yaml
+        def config = script.readYaml file: yaml
+        script.echo "${config}"
 
 
     }
