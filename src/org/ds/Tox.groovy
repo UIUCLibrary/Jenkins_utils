@@ -14,7 +14,7 @@ class Tox implements Serializable {
         this.toxPath = toxPath
     }
 
-    Tox(script){
+    Tox(script) {
         this.script = script
     }
 
@@ -28,12 +28,18 @@ class Tox implements Serializable {
 
     }
 
+    def getToxPath() {
+        if (this.toxPath) {
+            return this.toxPath
+        }
+        if (script.env.TOX) {
+            return script.env.TOX
+        }
+        throw new Exception("No Tox path defined")
+    }
+
     private def buildToxCommand() {
-        if(toxPath){
-            return "${toxPath} -e ${env}"
-        } else if (script.env.TOX){
-            return "${script.env.TOX}"
-        } else throw new Exception("No Tox path defined")
+        return "${toxPath} -e ${env}"
 
     }
 
