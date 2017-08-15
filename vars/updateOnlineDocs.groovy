@@ -1,5 +1,6 @@
 def call(url_subdomain){
     node{
+        deleteDir()
         script {
             try {
                 unstash "HTML Documentation"
