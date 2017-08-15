@@ -8,6 +8,10 @@ class DeploymentMessageBuilder {
         this.yaml =yaml
     }
     def build(){
+        if (!script.fileExists(this.yaml)){
+            throw new FileNotFoundException("Unable to find file ${yaml}")
+
+        }
         def config = script.readYaml file: yaml
         script.echo "config = ${config}"
         return "message is not ready"
