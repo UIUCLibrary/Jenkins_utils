@@ -6,6 +6,7 @@ class DeploymentMessageBuilder {
     DeploymentMessageBuilder(script, yaml){
         this.script = script
         this.yaml =yaml
+        println("thi script is ${script}")
     }
 
     def build(){
