@@ -9,5 +9,6 @@ def call(script, yaml){
 
     def builder = new DeploymentMessageBuilder(script, yaml)
 //    def deployment = readYaml file: "${yaml}"
-    def message = builder.build()
+    builder.build()
+//    def message = builder.build()
 }
