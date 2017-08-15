@@ -29,6 +29,7 @@ class Tox implements Serializable {
     }
 
     def getToxPath() {
+        this.echo "Looking up tox path"
         if (this.toxPath) {
             return this.toxPath
         }
