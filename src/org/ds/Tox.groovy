@@ -1,7 +1,8 @@
 package org.ds
 
 class Tox implements Serializable {
-    def toxPath
+
+    private def _toxPath
     def script
     def env
     def label
@@ -11,7 +12,7 @@ class Tox implements Serializable {
 
     Tox(script, toxPath) {
         this.script = script
-        this.toxPath = toxPath
+        this._toxPath = toxPath
     }
 
     Tox(script) {
@@ -28,10 +29,9 @@ class Tox implements Serializable {
 
     }
 
-    def getToxPath_() {
-        script.echo "Looking up tox path"
-        if (this.toxPath) {
-            return this.toxPath
+    def getToxPath() {
+        if (this._toxPath) {
+            return this._toxPath
         }
         if (script.env.TOX) {
             return script.env.TOX
@@ -40,8 +40,7 @@ class Tox implements Serializable {
     }
 
     private def buildToxCommand() {
-        def app = getToxPath_()
-        script.echo "Using $app"
+        def app = getToxPath()
         return "${app} -e ${env}"
 
     }
