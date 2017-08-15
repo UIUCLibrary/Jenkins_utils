@@ -29,7 +29,7 @@ class Tox implements Serializable {
     }
 
     def getToxPath() {
-        this.echo "Looking up tox path"
+        script.echo "Looking up tox path"
         if (this.toxPath) {
             return this.toxPath
         }
@@ -41,7 +41,7 @@ class Tox implements Serializable {
 
     private def buildToxCommand() {
         def app = getToxPath()
-        this.echo "Using $app"
+        script.echo "Using $app"
         return "${app} -e ${env}"
 
     }
