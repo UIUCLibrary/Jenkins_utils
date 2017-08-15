@@ -13,9 +13,9 @@ class DeploymentMessageBuilder {
             throw new FileNotFoundException("Unable to find file ${yaml}")
 
         }
-//        def config = script.readYaml file: yaml
+        script.echo "Reading yaml"
+        def config = script.readYaml file: yaml
 //        script.echo "config = ${config}"
-        script.echo "Reading something"
 //        return "message is not ready"
 
 
