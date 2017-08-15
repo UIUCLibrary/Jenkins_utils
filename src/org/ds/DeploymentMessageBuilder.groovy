@@ -9,7 +9,7 @@ class DeploymentMessageBuilder {
     }
     def build(){
         def config = script.readYaml file: yaml
-        script.echo "${config}"
+        script.echo "config = ${config}"
 
 
     }
