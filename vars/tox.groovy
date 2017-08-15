@@ -8,11 +8,15 @@
 //    }
 //}
 
-def call(toxPath, env, stash, label, post={}){
+def call(toxPath, env, stash, label, post={}, windows=false){
     node(label: "${label}"){
         deleteDir()
         unstash "${stash}"
-        sh "${toxPath} -e ${env}"
+        if(windows){
+            bat "${toxPath} -e ${env}"
+        }else {
+            sh "${toxPath} -e ${env}"
+        }
         post()
     }
 
