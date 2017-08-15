@@ -14,6 +14,10 @@ class Tox implements Serializable {
         this.toxPath = toxPath
     }
 
+    Tox(script){
+        this.script = script
+    }
+
     private def executeTox() {
 
         if (windows) {
@@ -25,7 +29,12 @@ class Tox implements Serializable {
     }
 
     private def buildToxCommand() {
-        "${toxPath} -e ${env}"
+        if(toxPath){
+            return "${toxPath} -e ${env}"
+        } else if (script.env.TOX){
+            return "${script.env.TOX}"
+        } else throw new Exception("No Tox path defined")
+
     }
 
     def run() {
