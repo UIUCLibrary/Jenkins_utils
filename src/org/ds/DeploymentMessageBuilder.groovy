@@ -16,7 +16,7 @@ class DeploymentMessageBuilder {
 //        def config = script.readYaml file: yaml
 //        script.echo "config = ${config}"
         script.sh "Reading something"
-        return "message is not ready"
+//        return "message is not ready"
 
 
     }
