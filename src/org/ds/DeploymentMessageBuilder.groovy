@@ -10,15 +10,13 @@ class DeploymentMessageBuilder {
     }
 
     def build(){
-        this.script.echo("check if ${yaml} is valid")
         if (!script.fileExists("${yaml}")){
-            this.script.echo("not found ${yaml}")
             throw new FileNotFoundException("Unable to find file ${yaml}")
 
         }
         script.echo "Reading yaml"
-//        def config = script.readfile "deployment.yml"
-//        script.echo "config = ${config}"
+        def config = script.readfile "deployment.yml"
+        script.echo "config = ${config}"
 //        def config = script.readYaml file: "deployment.yml"
 //        def config = script.readYaml file: "${yaml}"
 //        script.echo "config = ${config}"
