@@ -24,7 +24,7 @@ def call(body) {
         } else {
             sh "${env.TOX} -e ${config.env}"
         }
-        post()
+        config.post()
     }
 
 
