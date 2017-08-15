@@ -19,9 +19,10 @@ def call(body) {
         deleteDir()
         unstash "${config.stash}"
         if (config.windows) {
-            bat "${config.toxPath} -e ${config.env}"
+            bat "${env.TOX} -e ${config.env}"
+//            bat "${config.toxPath} -e ${config.env}"
         } else {
-            sh "${config.toxPath} -e ${config.env}"
+            sh "${env.TOX} -e ${config.env}"
         }
         post()
     }
