@@ -6,7 +6,7 @@ class DeploymentMessageBuilder {
     DeploymentMessageBuilder(script, yaml){
         this.script = script
         this.yaml =yaml
-        println("thi script is ${script}")
+        this.script.echo("thi script is ${script}")
     }
 
     def build(){
@@ -15,8 +15,8 @@ class DeploymentMessageBuilder {
 
         }
         script.echo "Reading yaml"
-        def config = script.readfile "deployment.yml"
-        script.echo "config = ${config}"
+//        def config = script.readfile "deployment.yml"
+//        script.echo "config = ${config}"
 //        def config = script.readYaml file: "deployment.yml"
 //        def config = script.readYaml file: "${yaml}"
 //        script.echo "config = ${config}"
