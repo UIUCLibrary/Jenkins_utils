@@ -1,7 +1,7 @@
-def call(pythonPath, stashName, archive = true) {
+def call(pythonPath, stash, archive = true) {
     node {
         deleteDir()
-        unstash "$stashName"
+        unstash "$stash"
         sh "${pythonPath} setup.py sdist"
         archiveArtifacts artifacts: "dist/**", fingerprint: archive
     }
