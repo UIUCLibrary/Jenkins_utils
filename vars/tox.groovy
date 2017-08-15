@@ -8,7 +8,7 @@
 //    }
 //}
 
-def call(toxPath, env, stash, label, post){
+def call(toxPath, env, stash, label, post={}){
     node(label: "${label}"){
         deleteDir()
         unstash "${stash}"
