@@ -15,7 +15,8 @@ class DeploymentMessageBuilder {
 
         }
         script.echo "Reading yaml"
-        script.readFile file: "${yaml}"
+        script.readFile encoding: 'utf-8', file: "${yaml}"
+
 //        def config = script.readFile file: "${yaml}"
 //        script.echo "config = ${config}"
 //        def config = script.readYaml file: "deployment.yml"
