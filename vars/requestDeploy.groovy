@@ -4,10 +4,11 @@ def call(script, yaml){
         throw new FileNotFoundException("Unable to find file ${yaml}")
 
     }
-    println("Creating deploy request message")
+    println("Creating deploy message builder")
     echo "yaml file is = ${yaml}"
 
     def builder = new DeploymentMessageBuilder(script, yaml)
+    println("Building message")
 //    def deployment = readYaml file: "${yaml}"
     builder.build()
 //    def message = builder.build()
