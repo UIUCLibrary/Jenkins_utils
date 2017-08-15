@@ -8,6 +8,7 @@ class DeploymentMessageBuilder {
         this.yaml =yaml
     }
     def build(){
+        script.readYaml file: yaml
 
 
     }
