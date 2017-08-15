@@ -1,6 +1,6 @@
 package org.ds
 
-class DeploymentMessageBuilder {
+class DeploymentMessageBuilder implements Serializable {
     private yaml
     private script
     DeploymentMessageBuilder(script, yaml){
