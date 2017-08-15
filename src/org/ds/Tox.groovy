@@ -33,14 +33,15 @@ class Tox implements Serializable {
             return this.toxPath
         }
         if (script.env.TOX) {
-            this.echo "Using ${script.env.TOX}"
-            return "${script.env.TOX}"
+            return script.env.TOX
         }
         throw new Exception("No Tox path defined")
     }
 
     private def buildToxCommand() {
-        return "${toxPath} -e ${env}"
+        def app = getToxPath()
+        this.echo "Using $app"
+        return "${app} -e ${env}"
 
     }
 
