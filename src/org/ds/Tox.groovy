@@ -33,7 +33,8 @@ class Tox implements Serializable {
             return this.toxPath
         }
         if (script.env.TOX) {
-            return script.env.TOX
+            this.echo "Using ${script.env.TOX}"
+            return "${script.env.TOX}"
         }
         throw new Exception("No Tox path defined")
     }
