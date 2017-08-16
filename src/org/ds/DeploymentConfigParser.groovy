@@ -21,7 +21,7 @@ class DeploymentConfigParser implements Serializable {
         metadata.put("maintainer_email", yaml.maintainer.email)
 
         // deployment
-        metadata.put("deployment_hostnames", yaml.deployment.hostnames[0])
+        metadata.put("deployment_hostnames", yaml.deployment.hostnames)
         return metadata
     }
 }
