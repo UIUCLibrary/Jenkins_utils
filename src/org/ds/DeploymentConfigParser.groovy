@@ -1,6 +1,6 @@
 package org.ds
 
-class DeploymentConfigParser {
+class DeploymentConfigParser implements Serializable {
     def private script
 
     DeploymentConfigParser(script) {
