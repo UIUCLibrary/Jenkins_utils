@@ -10,7 +10,7 @@ def call(Map conf){
                 echo "Building documentation"
                 unstash "Source"
                 sh "${env.PYTHON3} setup.py build_sphinx"
-                dir("doc/build") {
+                dir("docs/build") {
                     stash includes: 'html/**', name: "HTML Documentation", useDefaultExcludes: false
                 }
                 deleteDir()
