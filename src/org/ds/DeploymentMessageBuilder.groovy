@@ -16,7 +16,8 @@ class DeploymentMessageBuilder implements Serializable {
         }
         script.echo "Reading yaml"
         def configParser = new DeploymentConfigParser(script)
-        configParser.read(yaml)
+        def metadata = configParser.read(yaml)
+        script.echo("metadata = ${metadata}")
 
 //        def config = script.readYaml file: "${yaml}"
 //        script.echo "config = ${config}"
