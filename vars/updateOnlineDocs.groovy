@@ -1,9 +1,9 @@
-def call(url_subdomain){
+def call(url_subdomain, stash_name="HTML Documentation"){
     node{
         deleteDir()
         script {
             try {
-                unstash "HTML Documentation"
+                unstash "${stash_name}"
             } catch (error) { // No docs have been created yet, so generate it
                 echo "Building documentation"
                 unstash "Source"
