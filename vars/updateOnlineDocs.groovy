@@ -26,8 +26,7 @@ def call(Map conf){
                 throw error
             }
             echo "Archiving deployed docs"
-            sh 'tar -czvf sphinx_html_docs.tar.gz -C html .'
-            archiveArtifacts artifacts: 'sphinx_html_docs.tar.gz'
+            zip archive: true, dir: '.', glob: '', zipFile: 'sphinx_html_docs.zip'
         }
     }
 
