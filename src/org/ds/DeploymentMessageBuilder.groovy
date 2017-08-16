@@ -3,6 +3,26 @@ package org.ds
 class DeploymentMessageBuilder implements Serializable {
     private yaml
     private script
+    private template = '''Dear ${deployor},
+
+A new install package is ready for SCCM deployment.
+
+Filename: ${package_filename}
+
+Location: ${package_filepath}
+
+
+The target hostnames:
+<% deployment_hostnames.each { %>${"- $it"}
+<% } %>
+The package has passed the msiexec silent install test.
+
+This is an automated message but if you have questions, please contact ${maintainer_name} at ${maintainer_email}.
+
+Thank you for your time.
+
+'''
+
     DeploymentMessageBuilder(script, yaml){
         this.script = script
         this.yaml =yaml
@@ -17,15 +37,9 @@ class DeploymentMessageBuilder implements Serializable {
         script.echo "Reading yaml"
         def configParser = new DeploymentConfigParser(script)
         def metadata = configParser.read(yaml)
-        script.echo("metadata = ${metadata}")
-
-//        def config = script.readYaml file: "${yaml}"
-//        script.echo "config = ${config}"
-//        def deployer = config.deployer.name
-//        script.echo("deployer = ${deployer.name}")
-//        script.echo("deployer = ${deployer}")
-//        script.echo "config = ${config}"
-//        return "message is not ready"
+        def engine = new groovy.text.GStringTemplateEngine()
+        def template = engine.createTemplate(template).make(metadata)
+        return template.toString()
 
 
     }
