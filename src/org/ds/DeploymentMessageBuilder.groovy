@@ -18,7 +18,8 @@ class DeploymentMessageBuilder implements Serializable {
 
         def config = script.readYaml file: "${yaml}"
         script.echo "config = ${config}"
-        script.echo(deployer = "${config.deployer.name}")
+        def deployer = config.deployer
+        script.echo(deployer = "${deployer.name}")
 //        script.echo "config = ${config}"
 //        return "message is not ready"
 
