@@ -41,4 +41,8 @@ class ToxTest extends GroovyTestCase {
         runner.windows = false
         assert runner.buildToxCommand() == "/usr/bin/tox -e pytest"
     }
+    void testBuildNoEnvCommand(){
+        runner.windows = false
+        assert runner.buildToxCommand() == "/usr/bin/tox"
+    }
 }

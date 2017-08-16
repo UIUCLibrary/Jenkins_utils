@@ -41,7 +41,13 @@ class Tox implements Serializable {
 
     private def buildToxCommand() {
         def app = getToxPath()
-        return "${app} -e ${env}"
+        if(env){
+            return "${app} -e ${env}"
+        }
+        else {
+            return "${app}"
+        }
+
 
     }
 
