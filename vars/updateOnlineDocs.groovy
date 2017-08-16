@@ -1,9 +1,9 @@
-def call(url_subdomain, stash_name="HTML Documentation"){
+def call(Map conf){
     node{
         deleteDir()
         script {
             try {
-                unstash "${stash_name}"
+                unstash "${conf.stash_name}"
             } catch (error) { // No docs have been created yet, so generate it
                 echo "Building documentation"
                 unstash "Source"
@@ -18,7 +18,7 @@ def call(url_subdomain, stash_name="HTML Documentation"){
 
             echo "Updating online documentation"
             try {
-                sh("rsync -rv -e \"ssh -i ${env.DCC_DOCS_KEY}\" html/ ${env.DCC_DOCS_SERVER}/${url_subdomain}/ --delete")
+                sh("rsync -rv -e \"ssh -i ${env.DCC_DOCS_KEY}\" html/ ${env.DCC_DOCS_SERVER}/${conf.url_subdomain}/ --delete")
             } catch (error) {
                 echo "Error with uploading docs"
                 throw error
