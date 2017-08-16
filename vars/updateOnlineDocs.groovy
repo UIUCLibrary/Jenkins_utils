@@ -20,7 +20,7 @@ def call(Map conf){
 
             echo "Updating online documentation"
             try {
-                sh("rsync -rv -e \"ssh -i ${env.DCC_DOCS_KEY}\" html/ ${env.DCC_DOCS_SERVER}/${conf.url_subdomain}/ --delete")
+                sh("rsync -rv -e \"ssh -i ${env.DCC_DOCS_KEY}\" ./ ${env.DCC_DOCS_SERVER}/${conf.url_subdomain}/ --delete")
             } catch (error) {
                 echo "Error with uploading docs"
                 throw error
