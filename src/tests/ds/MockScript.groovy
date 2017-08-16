@@ -9,4 +9,6 @@ class MockScript {
     }
     def deleteDir() {}
     def unstash(str){}
+    def fileExists(str){return true}
+    def echo(str){println("${str}")}
 }
