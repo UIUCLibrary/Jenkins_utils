@@ -1,4 +1,6 @@
 def call(Map conf){
+    def defaultConf = [stash_name: "HTML Documentation"]
+    conf = defaultConf << conf
     node{
         deleteDir()
         script {
