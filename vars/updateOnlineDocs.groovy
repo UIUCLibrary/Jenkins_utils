@@ -11,8 +11,8 @@ def call(Map conf){
                 checkout scm
 //                unstash "Source"
                 sh "${env.PYTHON3} setup.py build_sphinx"
-                dir("docs/build") {
-                    stash includes: 'html/**', name: "HTML Documentation", useDefaultExcludes: false
+                dir("docs/build/html/") {
+                    stash includes: '**', name: "HTML Documentation", useDefaultExcludes: false
                 }
                 deleteDir()
                 unstash "HTML Documentation"
