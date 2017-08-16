@@ -11,5 +11,5 @@ def call(script, yaml){
     println("Building message")
 //    def deployment = readYaml file: "${yaml}"
     def message = builder.build()
-    echo ${message}
+    echo "${message}"
 }
