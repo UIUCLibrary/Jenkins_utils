@@ -8,7 +8,9 @@ class DeploymentConfigParser implements Serializable {
     }
     def read(filename){
         def metadata = [:]
-        def yaml = this.script.readYaml file: "${filename}"
+        def yaml = script.readYaml file: "${filename}"
+        //        def deployer = config.deployer.name
+        metadata.put("deployor", yaml.deployer.name)
         this.script.echo "${yaml}"
         return metadata
     }
