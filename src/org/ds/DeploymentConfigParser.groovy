@@ -8,6 +8,6 @@ class DeploymentConfigParser implements Serializable {
     }
     void read(filename){
         def yaml = this.script.readYaml file: "${filename}"
-        this.echo "${yaml}"
+        this.script.echo "${yaml}"
     }
 }
