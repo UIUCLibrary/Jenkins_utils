@@ -5,7 +5,6 @@ def call(Map conf){
         deleteDir()
         script {
             try {
-                echo "conf.stash_name = ${conf.stash_name}"
                 unstash "${conf.stash_name}"
             } catch (error) { // No docs have been created yet, so generate it
                 echo "Building documentation"
