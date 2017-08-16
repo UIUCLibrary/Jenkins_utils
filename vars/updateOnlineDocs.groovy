@@ -8,7 +8,8 @@ def call(Map conf){
                 unstash "${conf.stash_name}"
             } catch (error) { // No docs have been created yet, so generate it
                 echo "Building documentation"
-                unstash "Source"
+                checkout scm
+//                unstash "Source"
                 sh "${env.PYTHON3} setup.py build_sphinx"
                 dir("docs/build") {
                     stash includes: 'html/**', name: "HTML Documentation", useDefaultExcludes: false
