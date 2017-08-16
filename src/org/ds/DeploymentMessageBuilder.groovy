@@ -23,18 +23,17 @@ Thank you for your time.
 
 '''
 
-    DeploymentMessageBuilder(script, yaml){
+    DeploymentMessageBuilder(script, yaml) {
         this.script = script
-        this.yaml =yaml
+        this.yaml = yaml
 
     }
 
-    def build(){
-        if (!script.fileExists("${yaml}")){
+    def build() {
+        if (!script.fileExists("${yaml}")) {
             throw new FileNotFoundException("Unable to find file ${yaml}")
 
         }
-        script.echo "Reading yaml"
         def configParser = new DeploymentConfigParser(script)
         def metadata = configParser.read(yaml)
         def engine = new groovy.text.GStringTemplateEngine()
