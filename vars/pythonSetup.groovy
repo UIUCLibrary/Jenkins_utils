@@ -1,6 +1,7 @@
 import org.ds.Setuptools
 
 def call(script, Map args) {
+    echo "here I am"
     def defaultArgs = [setup_script: "setup.py", windows: false]
     args = defaultArgs << args
     def installer = new Setuptools(script, "${args.python_path}")
