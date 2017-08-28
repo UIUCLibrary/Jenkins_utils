@@ -4,10 +4,13 @@ def call(Map args) {
     def defaultArgs = [setup_script: "setup.py", windows: false]
     args = defaultArgs << args
     node{
-        def installer = new Setuptools(this, "${args.python_path}")
-        installer.args = "${args.args}"
-        installer.setup_script = "${args.setup_script}"
-        installer.windows = args.windows
-        installer.run()
+        script{
+            def installer = new Setuptools(this, "${args.python_path}")
+            installer.args = "${args.args}"
+            installer.setup_script = "${args.setup_script}"
+            installer.windows = args.windows
+            installer.run()
+
+        }
     }
 }
