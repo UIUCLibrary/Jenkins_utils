@@ -23,7 +23,6 @@ class VirtualEnv implements Serializable {
         }
 //        Add requirements to the virtualenv
         if (args.containsKey("requirements_file")) {
-            script.echo "contains requirement a file"
             runCommand("pip install -r ${args.requirements_file}")
         }
     }
