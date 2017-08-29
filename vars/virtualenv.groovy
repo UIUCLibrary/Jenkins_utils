@@ -7,7 +7,9 @@ def call(Map args = [:], Closure body) {
     script {
         def venv = new VirtualEnv(this, python_path)
         venv.windows = windows
+        echo "after checking"
         if (args.containsKey("requirements_file")) {
+            echo "after checking"
             venv.create_new(requirements_file: requirements_file)
         } else {
 
