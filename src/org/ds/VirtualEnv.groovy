@@ -28,8 +28,8 @@ class VirtualEnv implements Serializable {
             script.bat "${path}\\Scripts\\activate.bat"
         } else {
             script.sh """. ${path}/bin/activate
-. deactivate
 """
+//. deactivate
         }
 //        active = true
     }
