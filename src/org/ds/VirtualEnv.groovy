@@ -27,6 +27,7 @@ class VirtualEnv implements Serializable {
 ${cmd}
 """
         } else {
+            def activate = get_activate_command(path: path)
             script.sh """${activate}
 ${cmd}
 """
