@@ -34,16 +34,16 @@ class VirtualEnv implements Serializable {
     def runCommand(cmd) {
         if (windows) {
             def activate = get_activate_command(path: path, windows: true)
-            script.bat build_run_command(activate, cmd)
+            script.bat build_run_command(activate: activate, cmd: cmd)
         } else {
             def activate = get_activate_command(path: path)
-            script.sh build_run_command(activate, cmd)
+            script.sh build_run_command(activate: activate, cmd: cmd)
         }
 
     }
 
-    static def GString build_run_command(activate, cmd) {
-        return "${activate}\n${cmd}"
+    static def GString build_run_command(Map args) {
+        return "${args.activate}\n${args.cmd}"
     }
 
     static def get_activate_command(Map args) {
