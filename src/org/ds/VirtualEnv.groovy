@@ -36,7 +36,7 @@ class VirtualEnv implements Serializable {
             def activate = get_activate_command(path: path, windows: true)
             def run_command = build_run_command(activate: activate, cmd: cmd)
             script.echo "RUNNING THIS COMMAND -> ${run_command}"
-            script.bat run_command
+            script.bat """${run_command}"""
         } else {
             def activate = get_activate_command(path: path)
             script.sh build_run_command(activate: activate, cmd: cmd)
