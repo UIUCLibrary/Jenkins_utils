@@ -5,7 +5,6 @@ class VirtualEnv implements Serializable {
     def private script
     def private path
     def windows = false
-//    def private active = false
 
     VirtualEnv(script, python) {
         this.python = python
@@ -23,15 +22,25 @@ class VirtualEnv implements Serializable {
 
     def runCommand(cmd) {
         if (windows) {
-            script.bat """${path}\\Scripts\\activate.bat
+            def activate = get_activate_command(path: path, windows: true)
+            script.bat """${activate}
 ${cmd}
 """
         } else {
-            script.sh """. ${path}/bin/activate
+            script.sh """${activate}
 ${cmd}
 """
         }
 
+    }
+
+    static def get_activate_command(Map args) {
+        def windows = args.get("windows", false)
+        if(windows)
+            return "${args.path}\\Scripts\\activate.bat"
+        else {
+            return ". ${args.path}/bin/activate"
+        }
     }
 
     def delete(path = this.path) {
