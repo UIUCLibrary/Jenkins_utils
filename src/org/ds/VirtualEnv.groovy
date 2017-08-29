@@ -11,7 +11,7 @@ class VirtualEnv implements Serializable {
         this.script = script
     }
 
-    def create_new(Map args) {
+    def create_new(Map args = [:]) {
         path = args.get("path", ".env")
         this.path = path
         if (args.containsKey("requirements")){
