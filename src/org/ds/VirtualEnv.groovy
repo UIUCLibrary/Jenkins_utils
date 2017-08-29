@@ -12,12 +12,12 @@ class VirtualEnv implements Serializable {
     }
 
     def create_new(Map args = [:]) {
-        script.echo "HERE I AM"
         path = args.get("path", ".env")
         this.path = path
         script.echo "checking key again"
         if (args.containsKey("requirements_file")) {
             script.echo "contains requirement a file"
+            runCommand("pip install -r ${args.requirements_file}")
         }
         def create_command = build_create_venv_command(python: python, path: path)
         if (windows) {
