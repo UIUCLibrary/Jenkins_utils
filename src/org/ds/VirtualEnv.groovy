@@ -14,7 +14,7 @@ class VirtualEnv implements Serializable {
     def create_new(Map args = [:]) {
         path = args.get("path", ".env")
         this.path = path
-        if (args.containsKey("requirements")){
+        if (args.containsKey("requirements_file")){
             script.echo "contains requirement a file"
         }
         def create_command = build_create_venv_command(python: python, path: path)
