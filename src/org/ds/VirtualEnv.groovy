@@ -5,7 +5,7 @@ class VirtualEnv implements Serializable {
     def private script
     def private path
     def windows = false
-    def private active = false
+//    def private active = false
 
     VirtualEnv(script, python) {
         this.python = python
@@ -31,24 +31,22 @@ class VirtualEnv implements Serializable {
 . deactivate
 """
         }
-        active = true
+//        active = true
     }
 
 //        TODO:
-    def deactivate() {
-        script.echo "Deactivating"
-        if (windows) {
-            script.bat "deactivate"
-        } else {
-            script.sh ". deactivate"
-        }
-        active = false
-    }
+//    def deactivate() {
+//        script.echo "Deactivating"
+//        if (windows) {
+//            script.bat "deactivate"
+//        } else {
+//            script.sh ". deactivate"
+//        }
+//        active = false
+//    }
 
     def delete(path = this.path) {
-        if (this.active) {
-            throw new Exception("Unable to delete venv while active")
-        }
+
         script.dir(path) {
             script.deleteDir()
         }
