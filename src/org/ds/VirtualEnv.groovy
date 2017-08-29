@@ -29,6 +29,7 @@ class VirtualEnv implements Serializable {
         } else {
             script.sh """. ${path}/bin/activate
 echo "hello"
+python --version
 """
 //. deactivate
         }
