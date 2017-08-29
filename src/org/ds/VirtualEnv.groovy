@@ -14,16 +14,17 @@ class VirtualEnv implements Serializable {
     def create_new(Map args = [:]) {
         path = args.get("path", ".env")
         this.path = path
-        script.echo "checking key again"
-        if (args.containsKey("requirements_file")) {
-            script.echo "contains requirement a file"
-            runCommand("pip install -r ${args.requirements_file}")
-        }
+
         def create_command = build_create_venv_command(python: python, path: path)
         if (windows) {
             script.bat create_command
         } else {
             script.sh create_command
+        }
+//        Add requirements to the virtualenv
+        if (args.containsKey("requirements_file")) {
+            script.echo "contains requirement a file"
+            runCommand("pip install -r ${args.requirements_file}")
         }
     }
 
@@ -34,12 +35,16 @@ class VirtualEnv implements Serializable {
     def runCommand(cmd) {
         if (windows) {
             def activate = get_activate_command(path: path, windows: true)
-            script.bat "${activate}\n${cmd}"
+            script.bat build_run_command(activate, cmd)
         } else {
             def activate = get_activate_command(path: path)
-            script.sh "${activate}\n${cmd}"
+            script.sh build_run_command(activate, cmd)
         }
 
+    }
+
+    static def GString build_run_command(activate, cmd) {
+        return "${activate}\n${cmd}"
     }
 
     static def get_activate_command(Map args) {
