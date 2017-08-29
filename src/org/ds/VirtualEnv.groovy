@@ -11,7 +11,8 @@ class VirtualEnv implements Serializable {
         this.script = script
     }
 
-    def create_new(path = ".env") {
+    def create_new(Map args) {
+        path = args.get("path", ".env")
         this.path = path
         def create_command = build_create_venv_command(python: python, path: path)
         if (windows) {
