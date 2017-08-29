@@ -37,7 +37,7 @@ class VirtualEnv implements Serializable {
         if(windows){
             script.bat "deactivate"
         } else {
-            script.sh "deactivate"
+            script.sh ". deactivate"
         }
         active = false
     }
