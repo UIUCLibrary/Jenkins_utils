@@ -46,6 +46,18 @@ python --version
 //        }
 //        active = false
 //    }
+    def runCommand(cmd) {
+        if (windows) {
+            script.bat """${path}\\Scripts\\activate.bat
+${cmd}
+"""
+        } else {
+            script.sh """. ${path}/bin/activate
+${cmd}
+"""
+        }
+
+    }
 
     def delete(path = this.path) {
 

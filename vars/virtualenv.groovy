@@ -5,7 +5,7 @@ def call(Map args = [:], Closure body) {
     script {
         def venv = new VirtualEnv(this, python_path)
         venv.create_new()
-        venv.activate()
+        venv.runCommand("python --version")
         body()
 //        venv.deactivate()
         venv.delete()
