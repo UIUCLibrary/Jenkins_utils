@@ -26,7 +26,7 @@ class VirtualEnv implements Serializable {
         if(windows){
             script.bat "${path}\\Scripts\\activate.bat"
         } else {
-            script.sh "source ${path}/bin/activate"
+            script.sh ". ${path}/bin/activate"
         }
         active = true
     }
