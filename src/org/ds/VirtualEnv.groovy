@@ -43,7 +43,8 @@ class VirtualEnv implements Serializable {
     }
 
     static def GString build_run_command(Map args) {
-        return "${args.activate}\n${args.cmd}"
+        return """${args.activate}
+${args.cmd}"""
     }
 
     static def get_activate_command(Map args) {
