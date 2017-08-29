@@ -23,12 +23,22 @@ class VirtualEnv implements Serializable {
 //        TODO:
     def activate(){
         script.echo "Activating"
+        if(windows){
+            script.bat "${path}\\Scripts\\activate.bat"
+        } else {
+            script.sh "source ${path}/bin/activate"
+        }
         active = true
     }
 
 //        TODO:
     def deactivate(){
         script.echo "Deactivating"
+        if(windows){
+            script.bat "deactivate"
+        } else {
+            script.sh "deactivate"
+        }
         active = false
     }
 
