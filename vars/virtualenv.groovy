@@ -1,6 +1,6 @@
 import org.ds.VirtualEnv
 
-def call(Map args = [:], Closure body) {
+def call(Map args = [:], cmd) {
     def python_path = args.get("python_path", "python")
     def windows = args.get("windows", false)
     script {
@@ -12,8 +12,7 @@ def call(Map args = [:], Closure body) {
 
             venv.create_new()
         }
-        venv.runCommand("python --version")
-        body()
+        venv.runCommand(cmd)
         venv.delete()
     }
 }
