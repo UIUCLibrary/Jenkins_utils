@@ -22,13 +22,13 @@ class VirtualEnv implements Serializable {
 
 //        TODO:
     def activate(){
-        echo "Activating"
+        script.echo "Activating"
         active = true
     }
 
 //        TODO:
     def deactivate(){
-        echo "Deactivating"
+        script.echo "Deactivating"
         active = false
     }
 
