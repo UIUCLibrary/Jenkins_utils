@@ -47,7 +47,8 @@ class VirtualEnv implements Serializable {
     static def GString build_run_command(Map args) {
         def running_windows = args.get("windows", false)
         if(running_windows){
-            return "${args.activate} & ${args.cmd}"
+            def cmds = args.cmd.trim().replace("\n", " & ")
+            return "${args.activate} & ${cmds}"
         } else {
 
             return """${args.activate}

@@ -40,4 +40,13 @@ pip --version"""
         def command = venv.build_run_command(activate: ".env\\Scripts\\activate.bat", cmd: "pip --version", windows: true)
         assert command == ".env\\Scripts\\activate.bat & pip --version"
     }
+    void testBuild_run_command_windows_multiple() {
+        def command = venv.build_run_command(
+                activate: ".env\\Scripts\\activate.bat",
+                cmd: """pip --version
+python --version
+""",
+                windows: true)
+        assert command == ".env\\Scripts\\activate.bat & pip --version & python --version"
+    }
 }
