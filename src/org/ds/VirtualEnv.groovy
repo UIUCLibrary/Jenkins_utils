@@ -13,10 +13,11 @@ class VirtualEnv implements Serializable {
 
     def create_new(path = ".env") {
         this.path = path
+        def create_command = "${python} -m venv ${path}"
         if (windows) {
-            script.bat "${python} -m venv ${path}"
+            script.bat create_command
         } else {
-            script.sh "${python} -m venv ${path}"
+            script.sh create_command
         }
     }
 
