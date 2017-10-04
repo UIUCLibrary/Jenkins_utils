@@ -3,7 +3,7 @@ Jenkins Shared Libraries
 
 Utilities for common jenkins tasks
 
-##deployStash(stashName, dest)
+## deployStash(stashName, dest)
 * stashName: the name of the stash to deploy
 * dest: a directory location accessible by the server. 
 
