@@ -10,17 +10,17 @@ class VirtualEnvTest extends GroovyTestCase {
     }
 
     void testGet_activate_windows_command() {
-        assert VirtualEnv.get_activate_command(windows: true, path: "C:\\user\\temp\\.env") == "C:\\user\\temp\\.env\\Scripts\\activate.bat"
+        assert VirtualEnv.get_activate_command(windows: true, path: "C:\\user\\temp\\venv") == "C:\\user\\temp\\venv\\Scripts\\activate.bat"
     }
 
     void testGet_activate_unix_command() {
-        assert VirtualEnv.get_activate_command(path: "/tmp/.env") == ". /tmp/.env/bin/activate"
+        assert VirtualEnv.get_activate_command(path: "/tmp/venv") == ". /tmp/venv/bin/activate"
     }
 
 
     void testCreate_venv_command() {
-        def command = VirtualEnv.build_create_venv_command python: "/usr/bin/python3", path: ".env"
-        assert command == "/usr/bin/python3 -m venv .env"
+        def command = VirtualEnv.build_create_venv_command python: "/usr/bin/python3", path: "venv"
+        assert command == "/usr/bin/python3 -m venv venv"
     }
 
     void testCreate_new() {
@@ -32,8 +32,8 @@ class VirtualEnvTest extends GroovyTestCase {
     }
 
     void testBuild_run_command() {
-        def command = venv.build_run_command(". /tmp/.env/bin/activate", "pip --version")
-        assert  command == """. /tmp/.env/bin/activate
+        def command = venv.build_run_command(". /tmp/venv/bin/activate", "pip --version")
+        assert  command == """. /tmp/venv/bin/activate
 pip --version"""
     }
 }

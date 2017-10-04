@@ -12,7 +12,7 @@ class VirtualEnv implements Serializable {
     }
 
     def create_new(Map args = [:]) {
-        path = args.get("path", ".env")
+        path = args.get("path", "venv")
         this.path = path
 
         def create_command = build_create_venv_command(python: python, path: path)
