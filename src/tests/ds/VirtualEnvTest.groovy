@@ -32,8 +32,8 @@ class VirtualEnvTest extends GroovyTestCase {
     }
 
     void testBuild_run_command() {
-        def command = venv.build_run_command(". /tmp/.env/bin/activate", "pip --version")
-        assert  command == """. /tmp/.env/bin/activate
+        def command = venv.build_run_command(". /tmp/venv/bin/activate", "pip --version")
+        assert  command == """. /tmp/venv/bin/activate
 pip --version"""
     }
 }
