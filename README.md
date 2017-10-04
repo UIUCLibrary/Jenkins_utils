@@ -3,7 +3,15 @@ Jenkins Shared Libraries
 
 Utilities for common jenkins tasks
 
-## deployStash(stashName, dest)
+## Global Functions:
+
+All functions are accessible when the following lines are added to the jenkinsfile
+```groovy
+@Library("ds-utils") // Or whatever you called it when adding it to your jenkins shared library settings 
+import org.ds.*
+```
+
+### deployStash(stashName, dest)
 * stashName: the name of the stash to deploy
 * dest: a directory location accessible by the server. 
 
