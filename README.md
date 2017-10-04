@@ -17,5 +17,5 @@ Uses rsync to deploy all files in a stash to a directory accessible by the maste
 | Param     | Description                                   |
 | --------- | --------------------------------------------- |
 | stashName | Name of the stash to deploy                   |
-| dest      | a directory location accessible by the server.| 
+| dest      | Path accessible by the server.                | 
 
