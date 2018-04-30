@@ -44,7 +44,7 @@ class DeploymentMessageBuilderTest extends GroovyTestCase {
 
 A new install package is ready for SCCM deployment.
 
-Filename: DS HathiTrust Checksum Updater-amd64.msi
+Filename: HathiTrust_Checksum Updater-amd64.msi
 
 Location: \\\\files.library.illinois.edu\\groupfiles\\Digital Content Creation\\SCCM Upload\\
 
@@ -65,6 +65,7 @@ This is an automated message but if you have questions, please contact Henry Bor
 Thank you for your time.
 
 """
+            builder.set_filename("HathiTrust_Checksum Updater-amd64.msi")
             def message = builder.build()
             assert message == expected_message
         }
