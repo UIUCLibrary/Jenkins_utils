@@ -1,8 +1,11 @@
 package org.ds
 
+import groovy.text.GStringTemplateEngine
+
 class DeploymentMessageBuilder implements Serializable {
     private yaml
     private script
+    private file_name
     private template = '''Dear ${deployor},
 
 A new install package is ready for SCCM deployment.
@@ -36,10 +39,18 @@ Thank you for your time.
         }
         def configParser = new DeploymentConfigParser(script)
         def metadata = configParser.read(yaml)
-        def engine = new groovy.text.GStringTemplateEngine()
+        if(this.file_name){
+            metadata.package_filename = this.file_name
+        }
+        def engine = new GStringTemplateEngine()
         def template = engine.createTemplate(template).make(metadata)
         return template.toString()
 
+
+    }
+
+    def set_filename(filename){
+        this.file_name = filename
 
     }
 }
